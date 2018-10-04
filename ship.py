@@ -21,7 +21,7 @@ class Ship():
          """ Draw the ship at its current location."""
          self.screen.blit( self.image,self.rect)
 
-    def update_location(self):
+    def update(self):
         if self.moving_right and self.rect.right < self.screen_rect.right:
             self.center += self.ai_settings.ship_speed_factor
 

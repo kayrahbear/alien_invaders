@@ -1,4 +1,5 @@
 import pygame
+from pygame.sprite import Group
 
 from settings import Settings
 from ship import Ship
@@ -14,11 +15,14 @@ def run_game():
     pygame.display.set_caption("Alien Invasion")
 
     pink_ship = Ship(ai_settings, screen)
+    bullets = Group() # essentially an empty list that holds all the live bullets on the screen
     
     while True:
-        gf.check_events(pink_ship)
-        pink_ship.update_location()
-        gf.update_screen(ai_settings,screen,pink_ship)
+        gf.check_events(ai_settings, screen, pink_ship, bullets)
+        pink_ship.update()
+        gf.update_bullets(bullets)
+
+        gf.update_screen(ai_settings,screen,pink_ship, bullets)
 
 
 run_game()
